@@ -5,19 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Impugnación de Papeletas de Tránsito</title>
   <!-- Fuente Poppins de Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <!-- Íconos de Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /*******************************************************
-     *                    RESET & BASE                     *
-     *******************************************************/
     * {
       margin: 0;
       padding: 0;
@@ -26,32 +17,26 @@
 
     body {
       font-family: "Poppins", sans-serif;
-      background: #dfe3e8; /* Color de fondo para resaltar el contenedor */
+      background: #dfe3e8;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      overflow: hidden; /* Oculta scroll del body */
+      min-height: 100vh;
+      overflow: auto;
     }
 
-    /*******************************************************
-     *                    CONTENEDOR                       *
-     *******************************************************/
     .container {
       width: 100%;
       max-width: 1309px;
       min-height: 100vh;
-      height: 100vh;
-      border-radius: 20px;    /* Esquinas redondeadas */
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
       display: flex;
-      background-color: #fff; /* Fondo interno */
+      background-color: #fff;
+      flex-direction: row;
     }
 
-    /*******************************************************
-     *                    SIDEBAR                          *
-     *******************************************************/
     .sidebar {
       background: linear-gradient(135deg, #1fd2d8, #56b5e4);
       color: #fff;
@@ -99,9 +84,6 @@
       font-size: 0.9rem;
     }
 
-    /*******************************************************
-     *                CONTENIDO PRINCIPAL                  *
-     *******************************************************/
     .main-content {
       flex: 1;
       padding: 40px;
@@ -129,9 +111,6 @@
       color: #555;
     }
 
-    /*******************************************************
-     *                     SERVICIOS                       *
-     *******************************************************/
     .servicios {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -165,17 +144,11 @@
       font-weight: 500;
     }
 
-    /*******************************************************
-     *                     HORARIO                         *
-     *******************************************************/
     .horario p {
       margin-bottom: 8px;
       color: #555;
     }
 
-    /*******************************************************
-     *                     CONTACTO                        *
-     *******************************************************/
     .contacto {
       margin-bottom: 40px;
     }
@@ -194,44 +167,52 @@
       transform: translateY(-3px);
     }
 
-    /*******************************************************
-     *                SCROLL PERSONALIZADO                 *
-     *******************************************************/
     .main-content::-webkit-scrollbar,
     .sidebar::-webkit-scrollbar {
       width: 8px;
     }
+
     .main-content::-webkit-scrollbar-track,
     .sidebar::-webkit-scrollbar-track {
       background: #e1e1e1;
       border-radius: 10px;
     }
+
     .main-content::-webkit-scrollbar-thumb,
     .sidebar::-webkit-scrollbar-thumb {
       background: #007bff;
       border-radius: 10px;
     }
 
-    /*******************************************************
-     *                     RESPONSIVE                      *
-     *******************************************************/
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
-        border: none; /* Quitar el borde en pantallas pequeñas si prefieres */
-        border-radius: 0;
         height: auto;
+        border-radius: 0;
       }
+
       .sidebar {
         width: 100%;
         height: auto;
+        order: -1;
+        text-align: center;
+        align-items: center;
       }
+
+      .sidebar img {
+        width: 180px;
+        margin-bottom: 30px;
+      }
+
       .main-content {
         height: auto;
         padding: 20px;
       }
+
+      .servicios {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
     }
-    
   </style>
 </head>
 <body>
@@ -246,22 +227,12 @@
       <h2>CARLOS ALVAREZ CONDORI</h2>
       <p>Número: +51 917 524 130</p>
 
-      <!-- DATOS DEL USUARIO -->
       <div class="datos">
-        <!-- Contacto en la barra lateral -->
         <div class="contacto">
-          <a href="https://w.app/mklc89" target="_blank"
-            ><i class="fab fa-whatsapp"></i
-          ></a>
-          <a href="https://www.facebook.com/krlos.alvarez.581" target="_blank"
-            ><i class="fab fa-facebook"></i
-          ></a>
-          <a href="https://instagram.com/" target="_blank"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="https://linkedin.com/" target="_blank"
-            ><i class="fab fa-linkedin"></i
-          ></a>
+          <a href="https://w.app/mklc89" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/krlos.alvarez.581" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
         <p><strong>Email:</strong> carlosalvarez.legal@gmail.com</p>
         <p><strong>Ubicación:</strong> Juliaca - Perú</p>
@@ -271,7 +242,6 @@
 
     <!-- CONTENIDO PRINCIPAL -->
     <div class="main-content">
-      <!-- Título principal -->
       <h1>Impugnación de Papeletas de Tránsito</h1>
       <p>
         Soy un abogado especializado en la defensa de conductores y la
@@ -283,72 +253,23 @@
 
       <h2>Servicios que ofrezco</h2>
       <div class="servicios">
-        <!-- 1 -->
-        <div class="servicio">
-          <i class="fas fa-car-crash"></i>
-          <p>Conducción en estado de ebriedad</p>
-        </div>
-        <!-- 2 -->
-        <div class="servicio">
-          <i class="fas fa-id-card"></i>
-          <p>Suspensión y retención de licencias</p>
-        </div>
-        <!-- 3 -->
-        <div class="servicio">
-          <i class="fas fa-calendar-check"></i>
-          <p>Prescripción y caducidad</p>
-        </div>
-        <!-- 4 -->
-        <div class="servicio">
-          <i class="fas fa-ban"></i>
-          <p>Anulación de papeletas</p>
-        </div>
-        <!-- 5 -->
-        <div class="servicio">
-          <i class="fas fa-file-alt"></i>
-          <p>Descargos y apelaciones</p>
-        </div>
-        <!-- 6 -->
-        <div class="servicio">
-          <i class="fas fa-balance-scale"></i>
-          <p>Procedimientos coactivos</p>
-        </div>
-        <!-- 7 -->
-        <div class="servicio">
-          <i class="fas fa-exclamation-triangle"></i>
-          <p>Queja ante inspectoría</p>
-        </div>
-        <!-- 8 -->
-        <div class="servicio">
-          <i class="fas fa-car"></i>
-          <p>Asesoría en compra y venta de vehículos</p>
-        </div>
+        <div class="servicio"><i class="fas fa-car-crash"></i><p>Conducción en estado de ebriedad</p></div>
+        <div class="servicio"><i class="fas fa-id-card"></i><p>Suspensión y retención de licencias</p></div>
+        <div class="servicio"><i class="fas fa-calendar-check"></i><p>Prescripción y caducidad</p></div>
+        <div class="servicio"><i class="fas fa-ban"></i><p>Anulación de papeletas</p></div>
+        <div class="servicio"><i class="fas fa-file-alt"></i><p>Descargos y apelaciones</p></div>
+        <div class="servicio"><i class="fas fa-balance-scale"></i><p>Procedimientos coactivos</p></div>
+        <div class="servicio"><i class="fas fa-shield-alt"></i><p>Defensa legal en audiencias</p></div>
+        <div class="servicio"><i class="fas fa-clipboard-list"></i><p>Asesoría preventiva</p></div>
       </div>
 
+      <h2>Horario de Atención</h2>
       <div class="horario">
-        <h2>Horario de Atención</h2>
-        <p><strong>Lunes a Viernes:</strong> 9:00 AM - 6:00 PM</p>
-        <p><strong>Sábados:</strong> 10:00 AM - 2:00 PM</p>
-      </div>
-
-      <!-- Contacto en el contenido principal (opcional) -->
-      <div class="contacto">
-        <h2>Contáctame</h2>
-        <a href="https://w.app/mklc89" target="_blank"
-          ><i class="fab fa-whatsapp"></i
-        ></a>
-        <a href="https://www.facebook.com/krlos.alvarez.581" target="_blank"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a href="https://instagram.com/" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
-        <a href="https://linkedin.com/" target="_blank"
-          ><i class="fab fa-linkedin"></i
-        ></a>
+        <p>Lunes a Viernes: 9:00 a.m. - 6:00 p.m.</p>
+        <p>Sábados: 9:00 a.m. - 1:00 p.m.</p>
+        <p>Domingos: Cerrado</p>
       </div>
     </div>
   </div>
-
 </body>
 </html>
