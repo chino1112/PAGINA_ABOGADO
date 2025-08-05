@@ -1,276 +1,1174 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Impugnación de Papeletas de Tránsito</title>
-  <!-- Fuente Poppins de Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <!-- Íconos de Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Carlos Alvarez Condori - Abogado Especializado</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #dfe3e8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow: auto;
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            overflow-x: hidden;
+        }
 
-    .container {
-      width: 100%;
-      max-width: 1309px;
-      min-height: 100vh;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-      display: flex;
-      background-color: #fff;
-      flex-direction: row;
-    }
+        /* Hero Section con Video Background Effect */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(16, 42, 66, 0.95) 0%, 
+                rgba(24, 60, 94, 0.9) 50%, 
+                rgba(42, 67, 101, 0.85) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .sidebar {
-    background-color: #8B5A2B; /* Color madera */
-    color: #fff;
-    padding: 30px 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(16, 42, 66, 0.3) 100%);
+            pointer-events: none;
+        }
 
-    .sidebar img {
-      width: 280px;
-      border-radius: 50%;
-      margin-bottom: 58px;
-      border: 4px solid #fff;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
 
-    .sidebar img:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    }
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
 
-    .sidebar h2 {
-      margin-bottom: 10px;
-      font-size: 1.4rem;
-      text-align: center;
-    }
+        .floating-element:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 10%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { width: 60px; height: 60px; top: 80%; left: 20%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { width: 100px; height: 100px; top: 30%; right: 30%; animation-delay: 1s; }
 
-    .sidebar p {
-      text-align: center;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+        }
 
-    .sidebar .datos {
-      margin-top: 20px;
-      width: 100%;
-      text-align: center;
-    }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
 
-    .sidebar .datos p {
-      margin-bottom: 10px;
-      line-height: 1.4;
-      font-size: 0.9rem;
-    }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 80vh;
+        }
 
-    .main-content {
-      flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-      background-color: #f9f9f9;
-    }
+        .hero-text {
+            color: white;
+        }
 
-    .main-content h1 {
-      color: #333;
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
+        .hero-text .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease-out;
+        }
 
-    .main-content h2 {
-      color: #444;
-      margin-bottom: 15px;
-      font-size: 1.4rem;
-      margin-top: 30px;
-    }
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
 
-    .main-content p {
-      line-height: 1.6;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-      color: #555;
-    }
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
 
-    .servicios {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
 
-    .servicio {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.8s both;
+        }
 
-    .servicio:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-    }
+        .btn {
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .servicio i {
-      font-size: 28px;
-      color: #007bff;
-      margin-bottom: 10px;
-    }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
 
-    .servicio p {
-      color: #333;
-      font-weight: 500;
-    }
+        .btn:hover::before {
+            left: 100%;
+        }
 
-    .horario p {
-      margin-bottom: 8px;
-      color: #555;
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
 
-    .contacto {
-      margin-bottom: 40px;
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
+        }
 
-    .contacto a {
-      display: inline-block;
-      margin-right: 15px;
-      font-size: 45px;
-      color:#62ae3a;
-      text-decoration: none;
-      transition: color 0.3s, transform 0.3s;
-    }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
 
-    .contacto a:hover {
-      color: #0056b3;
-      transform: translateY(-3px);
-    }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
 
-    .main-content::-webkit-scrollbar,
-    .sidebar::-webkit-scrollbar {
-      width: 8px;
-    }
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideRight 0.8s ease-out 0.4s both;
+        }
 
-    .main-content::-webkit-scrollbar-track,
-    .sidebar::-webkit-scrollbar-track {
-      background: #e1e1e1;
-      border-radius: 10px;
-    }
+        .contact-info-hero {
+            margin-bottom: 40px;
+        }
 
-    .main-content::-webkit-scrollbar-thumb,
-    .sidebar::-webkit-scrollbar-thumb {
-      background: #007bff;
-      border-radius: 10px;
-    }
+        .contact-item-hero {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        height: auto;
-        border-radius: 0;
-      }
+        .contact-item-hero:hover {
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateX(5px);
+        }
 
-      .sidebar {
-        width: 100%;
-        height: auto;
-        order: -1;
-        text-align: center;
-        align-items: center;
-      }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
 
-      .sidebar img {
-        width: 180px;
-        margin-bottom: 30px;
-      }
+        .contact-details h4 {
+            color: #1a202c;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
 
-      .main-content {
-        height: auto;
-        padding: 20px;
-      }
+        .contact-details p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
 
-      .servicios {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      }
-    }
-  </style>
+        /* Services Section */
+        .services-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.3rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 64, 175, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: #3b82f6;
+            font-size: 30px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a202c;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(30, 64, 175, 0.05));
+            border-radius: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #3b82f6;
+            display: block;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 30px;
+            padding: 60px 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .about-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+        }
+
+        .schedule-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .schedule-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .schedule-text p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .schedule-grid {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .hours {
+            color: #3b82f6;
+            font-weight: 500;
+        }
+
+        .closed {
+            color: #ef4444;
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, -100px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            padding: 20px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .btn-white {
+            background: white;
+            color: #3b82f6;
+        }
+
+        .btn-white:hover {
+            background: #f8fafc;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25d366, #20b358);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            color: white;
+            font-size: 28px;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 15px 35px rgba(37, 211, 102, 0.7); }
+            100% { box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); }
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .about-content,
+            .schedule-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                max-width: 300px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .floating-whatsapp {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+
+        /* Scroll animations for elements */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-
-  <div class="container">
-    <!-- SIDEBAR (Perfil) -->
-    <div class="sidebar">
-      <img
-        src="https://st.depositphotos.com/2197868/4224/v/450/depositphotos_42245645-stock-illustration-law-or-layer-seal.jpg"
-        alt="Imagen de Perfil"
-      />
-      <h2>ALEX CARLOS ALVAREZ CONDORI</h2>
-      <p>Número: +51 917 524 130</p>
-
-      <div class="datos">
-        <div class="contacto">
-          <a href="https://w.app/mklc89" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.facebook.com/krlos.alvarez.581" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://myaccount.google.com/?utm_source=sign_in_no_continue&nlr=1" target="_blank"><i class="fas fa-envelope"></i></a>
-          <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
         </div>
-        <p><strong>Email:</strong>alexcarlosalvarezcondori@gmail.com</p>
-        <p><strong>Ubicación:</strong> Juliaca - Perú</p>
-        <p><strong>Profesión:</strong> Abogado</p>
-      </div>
-    </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="badge">
+                        <i class="fas fa-balance-scale"></i>
+                        Abogado Especializado
+                    </span>
+                    <h1>Alex Carlos<br>Alvarez Condori</h1>
+                    <h2>Experto en Derecho de Tránsito y Transporte</h2>
+                    <p>Defiendo tus derechos con soluciones ágiles y efectivas. Más de 5 años de experiencia en impugnación de papeletas de tránsito y derecho civil.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:+51917524130" class="btn btn-primary">
+                            <i class="fas fa-phone"></i>
+                            Consulta Gratuita
+                        </a>
+                        <a href="#servicios" class="btn btn-secondary">
+                            <i class="fas fa-briefcase"></i>
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="contact-info-hero">
+                        <div class="contact-item-hero">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Teléfono</h4>
+                                <p>+51 917 524 130</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item-hero">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>alexcarlosalvarezcondori@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item-hero">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Ubicación</h4>
+                                <p>Juliaca - Perú</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/51917524130" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:alexcarlosalvarezcondori@gmail.com" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <div class="main-content">
-      <h1>Impugnación de Papeletas de Tránsito</h1>
-      <p>
-        Soy un abogado especializado en derecho administartivo en transito y trasporte en defensa de conductores y la
-        <strong>impugnación de papeletas de tránsito, derecho civil de familia y sucesiones </strong>. Cuento con amplia
-        experiencia asesorando a mis clientes en la protección de sus derechos,
-        buscando soluciones ágiles y efectivas para anular o reducir las
-        sanciones impuestas.
-      </p>
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-badge">Servicios Especializados</span>
+                <h2 class="section-title">¿En qué te puedo ayudar?</h2>
+                <p class="section-description">Ofrezco servicios legales especializados con un enfoque personalizado y resultados efectivos.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3>Conducción en Estado de Ebriedad</h3>
+                    <p>Defensa especializada en casos de infracciones por conducir bajo efectos del alcohol. Análisis técnico de pruebas y procedimientos.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Suspensión y Retención de Licencias</h3>
+                    <p>Recuperación eficaz de licencias de conducir suspendidas o retenidas por autoridades de tránsito.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Prescripción y Caducidad</h3>
+                    <p>Análisis exhaustivo de plazos legales para anular sanciones por prescripción o caducidad del procedimiento.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Anulación de Papeletas</h3>
+                    <p>Impugnación estratégica de multas de tránsito injustificadas o mal aplicadas por las autoridades.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Descargos y Apelaciones</h3>
+                    <p>Presentación profesional de recursos administrativos y judiciales con fundamentación legal sólida.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Procedimientos Coactivos</h3>
+                    <p>Defensa especializada en procesos de cobranza coactiva de multas y sanciones administrativas.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Defensa Legal en Audiencias</h3>
+                    <p>Representación profesional y experimentada en audiencias administrativas y judiciales.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Asesoría en Compra y Venta Vehicular</h3>
+                    <p>Asistencia legal integral en transacciones de vehículos, contratos y transferencias.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Derecho Civil de Familia y Sucesiones</h3>
+                    <p>Asesoría integral en temas familiares, divorcios, herencias y procesos sucesorios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <h2>Servicios que ofrezco</h2>
-      <div class="servicios">
-        <div class="servicio"><i class="fas fa-car-crash"></i><p>Conducción en estado de ebriedad</p></div>
-        <div class="servicio"><i class="fas fa-id-card"></i><p>Suspensión y retención de licencias</p></div>
-        <div class="servicio"><i class="fas fa-calendar-check"></i><p>Prescripción y caducidad</p></div>
-        <div class="servicio"><i class="fas fa-ban"></i><p>Anulación de papeletas</p></div>
-        <div class="servicio"><i class="fas fa-file-alt"></i><p>Descargos y apelaciones</p></div>
-        <div class="servicio"><i class="fas fa-balance-scale"></i><p>Procedimientos coactivos</p></div>
-        <div class="servicio"><i class="fas fa-shield-alt"></i><p>Defensa legal en audiencias</p></div>
-        <div class="servicio"><i class="fas fa-clipboard-list"></i><p>Asesoría en conpra y venta vehicular</p></div>
-        <div class="servicio"><i class="fas fa-gavel"></i><p>Asesoría en derecho civil de familia y sucesiones</p></div>
-      </div>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>Experiencia que marca la diferencia</h2>
+                    <p>Como abogado especializado en derecho administrativo de tránsito y transporte, me dedico completamente a la defensa de conductores y la impugnación efectiva de papeletas de tránsito.</p>
+                    <p>Mi enfoque se basa en brindar soluciones ágiles y efectivas, protegiendo los derechos de mis clientes mediante un análisis detallado de cada caso y una estrategia legal personalizada.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Casos Exitosos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Años de Experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Tasa de Éxito</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Disponibilidad</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual fade-in">
+                    <div class="about-card">
+                        <div class="about-card-content">
+                            <h3>Mi Compromiso</h3>
+                            <p>Defender tus derechos con dedicación, profesionalismo y resultados efectivos. Cada caso es único y merece una atención personalizada para lograr la mejor solución posible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <h2>Horario de Atención</h2>
-      <div class="horario">
-        <p>Lunes a Viernes: 9:00 a.m. - 6:00 p.m.</p>
-        <p>Sábados: 9:00 a.m. - 1:00 p.m.</p>
-        <p>Domingos: Cerrado</p>
-      </div>
-    </div>
-  </div>
+    <!-- Schedule Section -->
+    <section class="schedule-section">
+        <div class="container">
+            <div class="schedule-content">
+                <div class="schedule-text fade-in">
+                    <h2>Horario de Atención</h2>
+                    <p>Estoy disponible para atenderte en los siguientes horarios. También puedes contactarme por WhatsApp para consultas urgentes fuera del horario regular.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:+51917524130" class="btn btn-primary">
+                            <i class="fas fa-phone"></i>
+                            Llamar Ahora
+                        </a>
+                        <a href="https://wa.me/51917524130" class="btn btn-secondary" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp 24/7
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="schedule-grid fade-in">
+                    <div class="schedule-item">
+                        <span class="day">
+                            <i class="fas fa-calendar-day"></i>
+                            Lunes a Viernes
+                        </span>
+                        <span class="hours">9:00 a.m. - 6:00 p.m.</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="day">
+                            <i class="fas fa-calendar-day"></i>
+                            Sábados
+                        </span>
+                        <span class="hours">9:00 a.m. - 1:00 p.m.</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="day">
+                            <i class="fas fa-calendar-day"></i>
+                            Domingos
+                        </span>
+                        <span class="hours closed">Cerrado</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="day">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </span>
+                        <span class="hours">Disponible 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>¿Necesitas Asesoría Legal?</h2>
+                <p>No dejes que una multa de tránsito afecte tu economía o tu licencia. Contáctame ahora y recibe una consulta gratuita para evaluar tu caso.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+51917524130" class="btn btn-white btn-cta">
+                        <i class="fas fa-phone"></i>
+                        Consulta Gratuita
+                    </a>
+                    <a href="https://wa.me/51917524130" class="btn btn-secondary btn-cta" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp Directo
+                    </a>
+                    <a href="mailto:alexcarlosalvarezcondori@gmail.com" class="btn btn-secondary btn-cta">
+                        <i class="fas fa-envelope"></i>
+                        Enviar Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/51917524130" class="floating-whatsapp" target="_blank" title="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos los elementos con clase fade-in
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efecto parallax para el hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            
+            if (heroSection) {
+                heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            
+            parallaxElements.forEach((el, index) => {
+                const speed = 0.2 + (index * 0.1);
+                el.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Contador animado para estadísticas
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                const suffix = counter.textContent.replace(/[0-9]/g, '');
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + suffix;
+                    }
+                }, 20);
+            });
+        }
+
+        // Activar contador cuando la sección sea visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-grid');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Notificación emergente
+        setTimeout(() => {
+            if (!sessionStorage.getItem('welcomeShown')) {
+                const notification = document.createElement('div');
+                notification.innerHTML = `
+                    <div style="position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #3b82f6, #1e40af); color: white; padding: 25px; border-radius: 20px; box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3); z-index: 1001; max-width: 350px; animation: slideInRight 0.5s ease; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-balance-scale" style="font-size: 20px;"></i>
+                                <strong style="font-size: 1.1rem;">¡Consulta Gratuita!</strong>
+                            </div>
+                            <button onclick="this.parentElement.parentElement.parentElement.remove(); sessionStorage.setItem('welcomeShown', 'true')" style="background: rgba(255,255,255,0.2); border: none; color: white; font-size: 18px; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">&times;</button>
+                        </div>
+                        <p style="margin: 0; font-size: 14px; line-height: 1.5; opacity: 0.9;">Evalúo tu caso sin costo. Más del 95% de éxito en impugnaciones de papeletas.</p>
+                        <a href="https://wa.me/51917524130" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.2); color: white; padding: 10px 15px; border-radius: 25px; text-decoration: none; font-size: 13px; font-weight: 600; margin-top: 15px; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                            <i class="fab fa-whatsapp"></i>
+                            Contactar ahora
+                        </a>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.style.animation = 'slideOutRight 0.5s ease';
+                        setTimeout(() => notification.remove(), 500);
+                    }
+                }, 10000);
+                
+                sessionStorage.setItem('welcomeShown', 'true');
+            }
+        }, 3000);
+
+        // Añadir estilos para animaciones de notificación
+        const notificationStyles = document.createElement('style');
+        notificationStyles.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(notificationStyles);
+
+        // Efecto de escritura para el título principal
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Activar efecto de escritura cuando la página carga
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero-text h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                setTimeout(() => {
+                    typeWriter(heroTitle, originalText, 80);
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
